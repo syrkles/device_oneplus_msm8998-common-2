@@ -321,9 +321,8 @@ on post-fs-data
     chmod 0770 /data/misc/fm
 
     #Create PERFD deamon related dirs
-    mkdir /data/vendor/perfd 0770 root system
-    chmod 2770 /data/vendor/perfd
-    rm /data/vendor/perfd/default_values
+    mkdir /data/system/perfd 0770 root system
+    chmod 2770 /data/system/perfd
 
     # NFC vendor data
     mkdir /data/vendor/nfc 0770 nfc nfc
@@ -377,7 +376,14 @@ service vendor.nqnfcinfo /vendor/bin/nqnfcinfo
     user system
     oneshot
 
-service vendor.iop /vendor/bin/iop
+service perfd /system/vendor/bin/perfd
+   class main
+   user root
+   group root readproc system
+   socket perfd seqpacket 0666 root system
+   disabled
+
+service iop /system/bin/iop
     class main
     user root
     group root
@@ -421,6 +427,9 @@ on property:persist.sys.ssr.enable_ramdumps=1
 
 on property:persist.sys.ssr.enable_ramdumps=0
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
+
+on property:sys.post_boot.parsed=1
+    start perfd
 
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
