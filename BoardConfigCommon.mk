@@ -61,6 +61,12 @@ TARGET_2ND_CPU_VARIANT := cortex-a73
 TARGET_USES_UEFI := true
 TARGET_USES_64_BIT_BINDER := true
 
+# Compile bionic with optimization
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+
+# Compile libhwui in performance mode
+HWUI_COMPILE_FOR_PERF := true
+
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=2048
 BOARD_KERNEL_CMDLINE += androidboot.configfs=true
@@ -77,6 +83,9 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 TARGET_KERNEL_CONFIG := lineage_oneplus5_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+
+# Enable real time lockscreen charging current values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
