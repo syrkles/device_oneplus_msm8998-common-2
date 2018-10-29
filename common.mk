@@ -153,8 +153,8 @@ PRODUCT_PACKAGES += \
     services-ext
 
 # Device
-PRODUCT_PACKAGES += \
-    DeviceParts
+#PRODUCT_PACKAGES += \
+#    DeviceParts
 
 # Display
 PRODUCT_PACKAGES += \
@@ -456,3 +456,5 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/wifi_concurrency_cfg.txt:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wifi_concurrency_cfg.txt
 
+# Inherit from oneplus-extras
+$(call inherit-product, device/oppo/common/common.mk)

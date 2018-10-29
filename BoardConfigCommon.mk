@@ -23,7 +23,7 @@
 #
 
 # Inherit from oppo-common
--include device/oppo/common/BoardConfigCommon.mk
+#-include device/oppo/common/BoardConfigCommon.mk
 
 PLATFORM_PATH := device/oneplus/msm8998-common
 
@@ -330,4 +330,4 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_DRIVER_OPERSTATE_PATH := "/sys/class/net/wlan0/operstate"
 
 # inherit from the proprietary version
--include vendor/oneplus/msm8998-common/BoardConfigVendor.mk
+#-include vendor/oneplus/msm8998-common/BoardConfigVendor.mk
