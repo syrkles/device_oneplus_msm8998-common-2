@@ -1,2 +1,2 @@
-add_lunch_combo aoscp_dumpling-userdebug
-add_lunch_combo aoscp_cheeseburger-userdebug
+add_lunch_combo aosp_dumpling-userdebug
+add_lunch_combo aosp_cheeseburger-userdebug
